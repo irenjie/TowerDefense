@@ -1,24 +1,24 @@
 using Data;
 using Helper;
-using System.Collections;
-using System.Collections.Generic;
-using UI;
-using UnityEngine;
+using MScene;
+using MUI;
 
 namespace Program {
     public class GameManager : SingletonBehaviour<GameManager> {
 
-        private void Awake() {
-            var go = transform.parent;
-            DontDestroyOnLoad(gameObject);
-
-            OnAppStart();
-        }
-
-        void OnAppStart() {
+        public void OnAppStart() {
             LevelHelper.Init();
 
-            UIManager.Front.Navigation<MainPanel>("UI/MainPanel.prefab");
+            SceneTransition<MainScene> mainSceneTransition = new SceneTransition<MainScene>();
+            mainSceneTransition.transitionEnd += mainScene => {
+                MUI.UIManager.Front.Navigation<MainPanel>("UI/MainPanel.prefab");
+            };
+
+            MySceneManager.Get().LoadScene<MainScene>("Scenes/MainScene.unity", UnityEngine.SceneManagement.LoadSceneMode.Single, mainSceneTransition);
+        }
+
+        private void Transition_transitionEnd(MainScene obj) {
+            throw new System.NotImplementedException();
         }
 
         private void OnApplicationFocus(bool focus) {
