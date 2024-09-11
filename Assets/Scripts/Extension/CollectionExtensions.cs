@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Extensions {
     public static class CollectionExtensions {
@@ -28,6 +29,46 @@ namespace Extensions {
             if (list == null || list.Count < index)
                 return default;
             return list[index];
+        }
+
+        public static bool TryFind<T>(this LinkedList<T> list, Predicate<T> match, out T result) {
+            result = default;
+
+            if (list == null || list.Count == 0)
+                return false;
+            if (match == null) {
+                result = list.First.Value;
+                return true;
+            }
+
+            foreach (T item in list) {
+                if (match(item)) {
+                    result = item;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static void AddBefore<T>(this LinkedList<T> list, Predicate<T> match, T value) {
+            if (list == null)
+                return;
+            if (list.Count == 0) {
+                list.AddFirst(value);
+                return;
+            }
+
+            LinkedListNode<T> newNode = new LinkedListNode<T>(value);
+            LinkedListNode<T> curNode = list.First;
+            while (curNode != null && !match(curNode.Value)) {
+                curNode = curNode.Next;
+            }
+            if (curNode != null) {
+                list.AddBefore(curNode, newNode);
+            } else {
+                list.AddLast(newNode);
+            }
         }
 
     }
