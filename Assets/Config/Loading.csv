@@ -1,0 +1,15 @@
+ID,名称,图片路径,描述
+id|int,name|string,imgPath|string,desc|string
+1001,Loading1,UIImg/Enemy/1001,对付倾巢而出的小型目标，有效布局群伤防御塔是明智之举
+1002,Loading2,UIImg/Enemy/1002,合理分配资源进行初期部署，好的开始是成功的一半
+1003,Loading3,UIImg/Enemy/1003,消灭敌方单位所能带来的资金奖励总是与敌人的强度正相关
+1004,Loading4,UIImg/Enemy/1004,不同敌方单位的弱点属性不同，因势而变，击其软肋！
+1005,Loading5,UIImg/Enemy/1005,减速效果之于钢铁洪流就如同俄国的雪地、越南的泥潭
+1006,Loading6,UIImg/Enemy/1010,防守多条要道时，观察敌军行动路线再部署防御塔岂不美哉？
+1007,Loading7,UIImg/Enemy/1011,强敌往往在后期波次出现，建设好火力网和控制场才能有备无患
+1008,Loading8,UIImg/Enemy/1017,大型敌方单位身后有时会是成群的蜘蛛机器人，切莫大意
+1009,Loading9,UIImg/Tower/1001,据小道消息，机枪升级到顶级时火力会有质的飞跃
+1010,Loading10,UIImg/Tower/1002,凭靠无与伦比的穿透力，穿甲炮塔能横扫敌方小型单位
+1011,Loading11,UIImg/Tower/1004,在交通要冲展开减速场，一夫当关，万夫莫开！
+1012,Loading12,UIImg/Tower/1005,强减速效果会覆盖弱减速效果，让敌方单位寸步难行
+1013,Loading13,UIImg/Tower/1008,激光束对部分大型单位毁伤效果拔群，面对小型单位却有心无力

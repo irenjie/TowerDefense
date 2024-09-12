@@ -1,6 +1,7 @@
 using Extensions;
 using Helper;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -9,8 +10,14 @@ namespace Data {
     [Serializable]
     public class GameData {
         #region 游戏数据
+        public int level;
         // 完成的关卡及最高分
-        [SerializeField] private SerializedDictionary<int, int> completedLevels;
+        public SerializedDictionary<int, int> completedLevels;
+        // 选中的上阵炮塔
+        public List<int> selectedTowers;
+        // 选中的上阵技能
+        public List<int> selectedSkills;
+
         #endregion
 
         #region 保存与读取

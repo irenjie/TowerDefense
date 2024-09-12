@@ -47,6 +47,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff62c4aed9cdb8b4da16f94c6357b182
+    m_Address: UI/CombatPanel/towerBtn.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cf41b6676122e049861e9958ef785d5
+    m_Address: UI/CombatPanel/skillBtn.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7922bdd1db286e7438435852fad7cf55, type: 2}
   m_SchemaSet:

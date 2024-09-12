@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Skill Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Skill Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 82d20a813b6ea074bb9b1be47d8f3ff0
+  m_SerializeEntries:
+  - m_GUID: 365b53772f827fb41bd70ed2c04b7d1a
+    m_Address: Skill
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7922bdd1db286e7438435852fad7cf55, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9d933c47103a8df4bae3d6f2a762aa67, type: 2}
+    - {fileID: 11400000, guid: bb024503461d0834eba06b8aea50d94a, type: 2}

@@ -7,6 +7,9 @@ using MUI;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using MTL.UI;
+using MScene;
+using UnityEngine.SceneManagement;
 
 namespace MUI {
     public class LevelSelectPanel : MainPanel {
@@ -26,13 +29,16 @@ namespace MUI {
             GameObject levelGO = LoaderHelper.Get().GetAsset<GameObject>("UI/LevelSelectPanel/Level.prefab");
             content.DestroyAllChilds();
 
-            List<LevelConfig> levelConfigs = LevelHelper.GetLevelConfigs();
-            foreach (LevelConfig config in levelConfigs) {
+            foreach (LevelConfig config in LevelHelper.levelConfigs) {
                 Transform levelTF = Instantiate(levelGO, content).transform;
-                levelTF.Find<Text>("label").text = config.ID.ToString();
+                levelTF.name = config.ID.ToString();
+                levelTF.Find<Text>("label").text = config.name.ToString();
+                levelTF.Find<AddressableImage>("img").SetSprite(config.iconAddress);
+                levelTF.GetComponent<Button>().BindListener(() => {
+                    MScene.LoadingScene.TransitionSceneWithLoading<CombatScene>(config.sceneAddress, LoadSceneMode.Single, default);
+                });
             }
             Addressables.Release(levelGO);
-
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Program {
 
         public void OnAppStart() {
             LevelHelper.Init();
+            TowerHelper.Initialize();
+            SkillHelper.Init();
 
             SceneTransition<MainScene> mainSceneTransition = new SceneTransition<MainScene>();
             mainSceneTransition.transitionEnd += mainScene => {

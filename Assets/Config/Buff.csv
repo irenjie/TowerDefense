@@ -1,0 +1,4 @@
+ID,名称,速度系数,特效路径,持续时间
+id|int,name|string,speedMul|float,effectPath|string,existTime|float
+1001,电击减速60%,0.4,Particle/Buff/1001,2
+1002,电击减速30%,0.7,Particle/Buff/1002,1
