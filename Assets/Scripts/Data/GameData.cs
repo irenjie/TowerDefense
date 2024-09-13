@@ -18,6 +18,8 @@ namespace Data {
         // 选中的上阵技能
         public List<int> selectedSkills;
 
+        [NonSerialized] public LevelConfig selectedLevel;
+
         #endregion
 
         #region 保存与读取

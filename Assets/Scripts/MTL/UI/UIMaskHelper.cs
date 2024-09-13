@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Helper;
+using MTL.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,10 @@ namespace MUI {
             mask.rectTransform.anchorMin = MathHelper.ZeroVector2;
             mask.rectTransform.anchorMax = MathHelper.OneVector2;
             mask.color = Color.clear;
+
+            EventManager.Get().Subscribe((int)EventID.SwitchScene, (sender, eventArgs) => {
+                canvas.worldCamera = Camera.main;
+            });
         }
 
         public void UpdateLayer(int layer, float alpha = 0.67f, bool anim = true) {

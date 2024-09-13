@@ -26,7 +26,7 @@ namespace Extensions {
         }
 
         public static T TryGetAt<T>(this IList<T> list, int index) {
-            if (list == null || list.Count < index)
+            if (list == null || index < 0 || list.Count < index)
                 return default;
             return list[index];
         }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Event {
+namespace MTL.Event {
     public class EventManager : SingletonClass<EventManager> {
         private EventPool<GameEventArgs> _eventPool;
         public EventManager() {

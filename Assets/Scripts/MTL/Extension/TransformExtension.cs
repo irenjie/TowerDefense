@@ -41,5 +41,12 @@ namespace Extensions {
                 UnityEngine.Object.Destroy(child.gameObject);
             }
         }
+
+        public static void SetActive(this Transform transform, bool active) {
+            if (transform == null)
+                return;
+
+            transform.gameObject.SetActive(active);
+        }
     }
 }

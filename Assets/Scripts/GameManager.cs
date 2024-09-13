@@ -1,15 +1,25 @@
 using Data;
+using Extensions;
 using Helper;
 using MScene;
+using MTL.Debug;
 using MUI;
 
 namespace Program {
     public class GameManager : SingletonBehaviour<GameManager> {
 
         public void OnAppStart() {
+            DontDestroyOnLoad(gameObject);
+
             LevelHelper.Init();
             TowerHelper.Initialize();
             SkillHelper.Init();
+
+#if Debug_Mode || Develop_Mode
+            DebugMenu debugMenu = LoaderHelper.Get().InstantiatePrefab("Debug/DebugMenu.prefab").transform.Find<DebugMenu>("DebugMenu");
+            DontDestroyOnLoad(debugMenu.transform.parent.gameObject);
+
+#endif
 
             SceneTransition<MainScene> mainSceneTransition = new SceneTransition<MainScene>();
             mainSceneTransition.transitionEnd += mainScene => {
@@ -17,10 +27,6 @@ namespace Program {
             };
 
             MySceneManager.Get().LoadScene<MainScene>("Scenes/MainScene.unity", UnityEngine.SceneManagement.LoadSceneMode.Single, mainSceneTransition);
-        }
-
-        private void Transition_transitionEnd(MainScene obj) {
-            throw new System.NotImplementedException();
         }
 
         private void OnApplicationFocus(bool focus) {

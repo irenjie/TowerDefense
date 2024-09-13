@@ -35,6 +35,7 @@ namespace MUI {
                 levelTF.Find<Text>("label").text = config.name.ToString();
                 levelTF.Find<AddressableImage>("img").SetSprite(config.iconAddress);
                 levelTF.GetComponent<Button>().BindListener(() => {
+                    GameData.Get().selectedLevel = config;
                     MScene.LoadingScene.TransitionSceneWithLoading<CombatScene>(config.sceneAddress, LoadSceneMode.Single, default);
                 });
             }

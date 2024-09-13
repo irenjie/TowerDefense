@@ -1,5 +1,5 @@
 
-namespace Event {
+namespace MTL.Event {
     public class GameEventArgs : System.EventArgs {
 
     }

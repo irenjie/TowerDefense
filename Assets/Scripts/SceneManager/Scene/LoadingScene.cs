@@ -1,4 +1,5 @@
 using Helper;
+using MTL.Event;
 using MUI;
 using UnityEngine.SceneManagement;
 
@@ -16,19 +17,19 @@ namespace MScene {
                     UIManager.ClearAll();
                 }
 
-                if (mode == LoadSceneMode.Additive) {
+                EventManager.Get().Fire(loadingScene, (int)EventID.SwitchScene, null);
+
+                SceneTransition<T> wrapSceneTransition = new SceneTransition<T>();
+                wrapSceneTransition.transitionEnd += targetScene => {
                     // 若为additive加载，加载完成后手动卸载loadingScene
-                    SceneTransition<T> wrapSceneTransition = new SceneTransition<T>();
-                    wrapSceneTransition.transitionEnd += targetScene => {
+                    if (mode == LoadSceneMode.Additive)
                         MySceneManager.Get().UnloadScene<LoadingScene>(default);
-                        sceneTransition.RaiseTransitionEnd(targetScene);
-                    };
+                    sceneTransition.RaiseTransitionEnd(targetScene);
 
-                    MySceneManager.Get().LoadScene<T>(address, mode, wrapSceneTransition);
-                } else {
-                    MySceneManager.Get().LoadScene<T>(address, mode, sceneTransition);
-                }
+                    EventManager.Get().Fire(targetScene, (int)EventID.SwitchScene, null);
+                };
 
+                MySceneManager.Get().LoadScene<T>(address, mode, wrapSceneTransition);
             };
 
             MySceneManager.Get().LoadScene<LoadingScene>("Scenes/LoadingScene.unity", mode, loadingSceneTrans);

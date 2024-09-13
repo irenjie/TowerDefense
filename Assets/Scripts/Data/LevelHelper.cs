@@ -9,7 +9,7 @@ namespace Data {
     public class LevelConfig {
         public int ID { get; private set; }
         public string name { get; private set; }
-        public string description { get; private set; }
+        public List<string> stroyDesc;
         public string sceneAddress => $"Level/{ID}/Level{ID}.unity";
         public string iconAddress => $"Level/{ID}/icon.png";
         public int startEnerge { get; private set; }
@@ -24,11 +24,11 @@ namespace Data {
         public float electMul { get; private set; }
         public float laserMul { get; private set; }
 
-        public LevelConfig(int iD, string name, string description, int startEnerge, int startHealth, List<int> towerEnabled,
+        public LevelConfig(int iD, string name, List<string> description, int startEnerge, int startHealth, List<int> towerEnabled,
             int energeBallGenerationRate, int easyModeMul, int hardModeMul, float armMul, float electMul, float laserMul) {
             ID = iD;
             this.name = name;
-            this.description = description;
+            this.stroyDesc = description;
             this.startEnerge = startEnerge;
             this.startHealth = startHealth;
             this.towerEnabled = towerEnabled;
@@ -55,7 +55,8 @@ namespace Data {
             for (int i = 3; i < lineCount; i++) {
                 string[] la = lines[i].Trim().Split(',');
                 List<int> towerEnabled = la[6].Split('|').Select(id => int.Parse(id)).ToList();
-                LevelConfig newLevel = new LevelConfig(int.Parse(la[0]), la[2], la[8], int.Parse(la[4]), int.Parse(la[5]), towerEnabled,
+                List<string> storyDesc = la[8].Split('|').ToList();
+                LevelConfig newLevel = new LevelConfig(int.Parse(la[0]), la[2], storyDesc, int.Parse(la[4]), int.Parse(la[5]), towerEnabled,
                     int.Parse(la[9]), int.Parse(la[10]), int.Parse(la[11]), float.Parse(la[12]), float.Parse(la[13]), float.Parse(la[14]));
 
                 levelConfigs.Add(newLevel);

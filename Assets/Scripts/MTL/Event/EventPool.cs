@@ -1,8 +1,8 @@
-using Event;
+using MTL.Event;
 using System;
 using System.Collections.Generic;
 
-namespace Event {
+namespace MTL.Event {
     public class EventPool<T> where T : GameEventArgs {
         private readonly Dictionary<int, EventHandler<T>> _dic = new Dictionary<int, EventHandler<T>>();
 
