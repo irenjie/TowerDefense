@@ -1,4 +1,4 @@
-using Data;
+using MTL.Data;
 using Extensions;
 using Helper;
 using MScene;
@@ -14,6 +14,7 @@ namespace Program {
             LevelHelper.Init();
             TowerHelper.Initialize();
             SkillHelper.Init();
+            EnemyHelper.Initialize();
 
 #if Debug_Mode || Develop_Mode
             DebugMenu debugMenu = LoaderHelper.Get().InstantiatePrefab("Debug/DebugMenu.prefab").transform.Find<DebugMenu>("DebugMenu");

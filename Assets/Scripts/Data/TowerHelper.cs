@@ -4,7 +4,7 @@ using Helper;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace Data {
+namespace MTL.Data {
     public class TowerConfig {
         public int id { get; private set; }
         public string realID => $"{id}{curLevel.ToString("D2")}";
@@ -80,7 +80,7 @@ namespace Data {
             }
         }
 
-        public static TowerConfig GetTowerConfig(int id, int level = 1) {
+        public static TowerConfig GetTowerConfigById(int id, int level = 1) {
             if (level < 1)
                 return null;
 
@@ -94,7 +94,7 @@ namespace Data {
             return level - 1 > result.upgrades.Count ? null : result.upgrades[level - 2];
         }
 
-        public static TowerConfig GetTowerConfig(string realID) {
+        public static TowerConfig GetTowerConfigRealId(string realID) {
             return towerConfigs.Find(config => config.realID == realID);
         }
     }

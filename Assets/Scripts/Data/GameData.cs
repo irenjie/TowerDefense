@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace Data {
+namespace MTL.Data {
 
     [Serializable]
     public class GameData {

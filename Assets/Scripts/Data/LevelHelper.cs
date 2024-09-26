@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Data {
+namespace MTL.Data {
     public class LevelConfig {
         public int ID { get; private set; }
         public string name { get; private set; }
@@ -61,6 +61,10 @@ namespace Data {
 
                 levelConfigs.Add(newLevel);
             }
+        }
+
+        public static LevelConfig GetLevelConfigById(int id) {
+            return levelConfigs.Find(config=>config.ID.Equals(id));
         }
 
     }

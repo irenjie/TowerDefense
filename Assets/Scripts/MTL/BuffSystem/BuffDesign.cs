@@ -17,12 +17,4 @@ namespace Buff {
         Clear,
         Reduce
     }
-
-    public enum EDamageType {
-        Armour,
-        Electricity,
-        Laser,
-        Fire,
-        Frost
-    }
 }

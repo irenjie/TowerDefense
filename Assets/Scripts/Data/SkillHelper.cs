@@ -1,11 +1,12 @@
 
 using Buff;
 using Helper;
+using MTL.Combat;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Data {
+namespace MTL.Data {
     public enum SkillType {
         Posional = 0,
         BaseBuff = 1,
@@ -61,7 +62,7 @@ namespace Data {
             }
         }
 
-        public static SkillConfig GetSkillConfig(int id) {
+        public static SkillConfig GetSkillConfigById(int id) {
             return skillConfigs.Find(skill => skill.id == id);
         }
 

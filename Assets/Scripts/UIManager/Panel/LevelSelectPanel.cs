@@ -1,4 +1,4 @@
-using Data;
+using MTL.Data;
 using Extensions;
 using Helper;
 using System.Collections;
@@ -36,7 +36,7 @@ namespace MUI {
                 levelTF.Find<AddressableImage>("img").SetSprite(config.iconAddress);
                 levelTF.GetComponent<Button>().BindListener(() => {
                     GameData.Get().selectedLevel = config;
-                    MScene.LoadingScene.TransitionSceneWithLoading<CombatScene>(config.sceneAddress, LoadSceneMode.Single, default);
+                    MScene.LoadingScene.TransitionSceneWithLoading<LevelScene>(config.sceneAddress, LoadSceneMode.Single, default);
                 });
             }
             Addressables.Release(levelGO);

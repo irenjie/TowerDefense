@@ -1,4 +1,4 @@
-using Data;
+using MTL.Data;
 using MTL.Event;
 using Extensions;
 using Helper;
@@ -9,22 +9,24 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MScene;
+using System;
 
 namespace MUI {
     public class CombatPanel : BasePanel {
         #region 游戏对象
-        CombatScene combatScene;
+        LevelScene combatScene;
         Transform towerPanel;
         Transform skillPanel;
         Button btn_setting;
         Button btn_pause;
         Button btn_timeScale;
         Transform dialogueBox;
+        Text pauseText;
         #endregion
 
         #region 游戏状态
-        float curTimeScale = 1;
-        bool gamePaused = false;
+        PauseState pauseState;
+        float curTimeScale = 1f;
         #endregion
 
         #region 战斗数据
@@ -33,7 +35,7 @@ namespace MUI {
 
         private IEnumerator Start() {
             GameData gameData = GameData.Get();
-            combatScene = FindFirstObjectByType<CombatScene>();
+            combatScene = FindFirstObjectByType<LevelScene>();
 
             #region 炮塔
             {
@@ -41,7 +43,7 @@ namespace MUI {
                 towerPanel.DestroyAllChilds();
                 GameObject towerBtnPrefab = LoaderHelper.Get().GetAsset<GameObject>("UI/CombatPanel/towerBtn.prefab");
                 foreach (var selectedTower in gameData.selectedTowers) {
-                    TowerConfig tower = TowerHelper.GetTowerConfig(selectedTower);
+                    TowerConfig tower = TowerHelper.GetTowerConfigById(selectedTower);
                     Transform towerBtnTF = Instantiate(towerBtnPrefab, towerPanel).transform;
                     towerBtnTF.name = tower.realID;
                     towerBtnTF.Find<AddressableImage>("icon").SetSprite(tower.btnIconAddress);
@@ -56,7 +58,7 @@ namespace MUI {
                 skillPanel.DestroyAllChilds();
                 GameObject skillBtnPrefab = LoaderHelper.Get().GetAsset<GameObject>("UI/CombatPanel/towerBtn.prefab");
                 foreach (var selectedSkill in gameData.selectedSkills) {
-                    SkillConfig skill = SkillHelper.GetSkillConfig(selectedSkill);
+                    SkillConfig skill = SkillHelper.GetSkillConfigById(selectedSkill);
                     Transform skillBtnTF = Instantiate(skillBtnPrefab, skillPanel).transform;
                     skillBtnTF.name = skill.id.ToString();
                     skillBtnTF.Find<AddressableImage>("icon").SetSprite(skill.btnIconAddress);
@@ -76,14 +78,30 @@ namespace MUI {
                     UIManager.Front.PopUp<SettingPanel>("UI/SettingPanel.prefab");
                 });
 
-                Text pauseText = btn_pause.transform.Find<Text>("Text");
+                #region 暂停、下一波
+                pauseText = btn_pause.transform.Find<Text>("Text");
                 btn_pause.BindListener(() => {
-                    gamePaused = !gamePaused;
-                    Time.timeScale = gamePaused ? 0 : curTimeScale;
-                    pauseText.text = gamePaused ? "继续" : "暂停";
-
-                    EventManager.Get().Fire(btn_pause.gameObject, (int)EventID.GamePause, new BoolEventArgs(gamePaused));
+                    switch (pauseState) {
+                        case PauseState.WaitingWaveStart:
+                            pauseText.text = "暂停";
+                            pauseState = PauseState.InProgress;
+                            EventManager.Get().Fire(btn_pause.gameObject, (int)EventID.WaveStart, null);
+                            break;
+                        case PauseState.InProgress:
+                            Time.timeScale = 0;
+                            pauseText.text = "继续";
+                            pauseState = PauseState.Paused;
+                            EventManager.Get().Fire(btn_pause.gameObject, (int)EventID.GamePause, new BoolEventArgs(true));
+                            break;
+                        case PauseState.Paused:
+                            Time.timeScale = curTimeScale;
+                            pauseText.text = "暂停";
+                            pauseState = PauseState.InProgress;
+                            EventManager.Get().Fire(btn_pause.gameObject, (int)EventID.GamePause, new BoolEventArgs(false));
+                            break;
+                    }
                 });
+                #endregion
 
                 Text ScaleText = btn_timeScale.transform.Find<Text>("Text");
                 btn_timeScale.BindListener(() => {
@@ -91,7 +109,7 @@ namespace MUI {
                     Time.timeScale = curTimeScale;
                     ScaleText.text = $"{(int)curTimeScale}X";
 
-                    EventManager.Get().Fire(btn_timeScale.gameObject, (int)EventID.GameTimeScale, new FloatEventArgs(curTimeScale));
+                    EventManager.Get().Fire(btn_timeScale.gameObject, (int)EventID.ChangeTimeScale, new FloatEventArgs(curTimeScale));
 
                 });
             }
@@ -113,11 +131,26 @@ namespace MUI {
         }
 
         private void SubscriptEvent() {
-
+            EventManager eventManager = EventManager.Get();
+            // 一波完成
+            eventManager.Subscribe((int)EventID.WaveCompleted, OnWaveCompleted);
         }
 
         private void ClearEvent() {
+            EventManager eventManager = EventManager.Get();
+            eventManager.UnSubscribe((int)EventID.WaveCompleted, OnWaveCompleted);
+        }
 
+        private void OnWaveCompleted(object sender, GameEventArgs e) {
+            pauseText.text = "下一波";
+            Time.timeScale = curTimeScale = 1;
         }
     }
+
+    enum PauseState {
+        WaitingWaveStart,
+        InProgress,
+        Paused,
+    }
+
 }
