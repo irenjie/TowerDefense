@@ -1,5 +1,6 @@
 
 using Buff;
+using MTL.Event;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace MTL.Combat {
     public class Health : MonoBehaviour {
         public float maxHealth { get; private set; } = 10f;
         public float curHealth { get; private set; }
+        public bool isAlive { get; private set; } = true;
+
 
         #region 回调点
         public event EventHandler OnDie;
@@ -29,7 +32,20 @@ namespace MTL.Combat {
             UpdateHealthBar();
         }
 
-        public void TakeDamage(DamageInfo dinfo, Attacker attacker) {
+        public virtual void TakeDamage(DamageInfo dinfo) {
+            TakeDamage(dinfo.damage);
+        }
+
+        public void TakeDamage(float damage) {
+
+            curHealth -= damage;
+            curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
+            OnDamaged?.Invoke(this, GameEventArgs.Empty);
+
+            HandleDeath();
+        }
+
+        public virtual void TakePercentDamage(DamageInfo dinfo) {
 
         }
 
@@ -40,8 +56,9 @@ namespace MTL.Combat {
         /// <summary>
         /// 判断并处理死亡
         /// </summary>
-        private void HandleDeath() {
+        protected virtual void HandleDeath() {
             if (curHealth <= 0f) {
+                isAlive = false;
                 OnDie?.Invoke(this, EventArgs.Empty);
             }
         }

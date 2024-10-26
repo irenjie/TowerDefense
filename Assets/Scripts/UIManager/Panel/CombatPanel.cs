@@ -34,6 +34,8 @@ namespace MUI {
 
 
         private IEnumerator Start() {
+            yield break;
+
             GameData gameData = GameData.Get();
             combatScene = FindFirstObjectByType<LevelScene>();
 
@@ -118,17 +120,9 @@ namespace MUI {
 
             Transform midBottom = root.Find("midBottom");
             midBottom.DestroyAllChilds();
-
-            PlayStroy();
         }
 
-        /// <summary>
-        /// ²¥·Å¾çÇé
-        /// </summary>
-        public void PlayStroy() {
-            var panel = UIManager.Front.PopUp<StroyPlayPanel>("UI/StoryPlayPanel.prefab");
-            panel.PlayStory(GameData.Get().selectedLevel.stroyDesc);
-        }
+
 
         private void SubscriptEvent() {
             EventManager eventManager = EventManager.Get();

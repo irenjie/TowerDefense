@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8838f9e3fa4281f48a9a64c787c84798, type: 3}
+  m_Name: TerrainSplat
+  m_EditorClassIdentifier: 
+  prototypes:
+  - texture: {fileID: 2800000, guid: a4f60628319247145959334cfabae4b4, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 2800000, guid: 6f66d191fc1a494408e6ecea0361f53c, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 2800000, guid: 338a8ed3a2fc95f4b9339998cf4d3bac, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 2800000, guid: 5568a348bde064746a35357f278d7820, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0

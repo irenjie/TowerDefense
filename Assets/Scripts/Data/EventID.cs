@@ -5,9 +5,15 @@ namespace MTL.Event {
         ChangeTimeScale = 0,
         GamePause = 1,
         SwitchScene = 2,
-        StoryPlayOver = 3,
-        WaveCompleted = 4,
-        AllWaveCompleted = 5,
-        WaveStart = 5,
+        TipPanel_ShowTip = 3,
+
+        StoryPlayOver = 1000,
+        WaveCompleted = 1001,
+        AllWaveCompleted = 1002,
+        WaveStart = 1003,
+        Victoty = 1004,
+        BaseUnderAttack = 1005,
+        BaseDestroyed = 1006,
+
     }
 }

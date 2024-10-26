@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8838f9e3fa4281f48a9a64c787c84798, type: 3}
+  m_Name: CustomSplat
+  m_EditorClassIdentifier: 
+  prototypes:
+  - texture: {fileID: 2800000, guid: d5a0920950e5c4543abd8ccc4ec3c293, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 0}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 2800000, guid: 8cea12f50fc12ba44b1ff9819f88b505, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 1, y: 1}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0
+  - texture: {fileID: 2800000, guid: f9c055c615c26574da00b7f2d4e9e9c8, type: 3}
+    normalMap: {fileID: 0}
+    tileSize: {x: 10, y: 10}
+    tileOffset: {x: 0, y: 0}
+    metallic: 0
+    smoothness: 0

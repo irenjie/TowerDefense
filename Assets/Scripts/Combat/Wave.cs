@@ -29,6 +29,10 @@ namespace MTL.Combat {
         /// </summary>
         public float spawnDelay = 1f;
         /// <summary>
+        /// 生成完成
+        /// </summary>
+        public bool spwanCompleted { get; private set; }
+        /// <summary>
         /// 生成完成 + 全部消灭
         /// </summary>
         public bool completed { get; private set; } = false;
@@ -46,7 +50,7 @@ namespace MTL.Combat {
         /// 检查是否生成完成 + 全部消灭
         /// </summary>
         public void CheckCompleted() {
-
+            completed = spwanCompleted && EnemyManager.Get().ExistEnemyNum == 0;
         }
 
         public IEnumerator StartWave() {

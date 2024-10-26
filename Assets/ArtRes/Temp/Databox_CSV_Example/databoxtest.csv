@@ -1,0 +1,4 @@
+﻿DB_FIELD_NAMES,maxhp,maxmp,name
+DB_FIELD_TYPES,IntType,IntType,StringType
+1001,100,200,张飞
+1002,500,400,吕布
