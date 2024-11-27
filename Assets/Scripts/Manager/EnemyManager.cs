@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MTL.Combat {
-    public class EnemyManager : SingletonClass<EnemyManager> {
-        List<Enemy> enemyList = new List<Enemy>();
+    public class EnemyManager : MonoBehaviour {
+        public List<Enemy> enemyList { get; private set; }
         public int ExistEnemyNum => enemyList.Count;
+
+        private void Awake() {
+            enemyList = new List<Enemy>();
+        }
 
         public void LevelStart(int level) {
             enemyList.Clear();

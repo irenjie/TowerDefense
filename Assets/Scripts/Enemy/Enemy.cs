@@ -1,4 +1,5 @@
 using Helper;
+using MScene;
 using MTL.Data;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,8 +9,9 @@ namespace MTL.Combat {
     public class Enemy : MonoBehaviour {
         [SerializeField] private int id;
         public EnemyConfig enemyConfig { get; private set; }
-        [SerializeField] Health health;
+        EnemyHealth health;
         PathFinder pathFinder;
+        public Vector3 position=>transform.position;
         public bool isAlive => health.isAlive;
 
 
@@ -17,7 +19,7 @@ namespace MTL.Combat {
             enemyConfig = EnemyHelper.GetEnemyConfigById(id);
             pathFinder = GetComponent<PathFinder>();
             pathFinder.Init(path);
-            health = GetComponent<Health>();
+            health = GetComponent<EnemyHealth>();
 
         }
 
@@ -25,12 +27,12 @@ namespace MTL.Combat {
         /// µÐÈË½ø·ÀÓùËþ
         /// </summary>
         public void EnterBase() {
-            EnemyManager.Get().EnemyEnterBase(this);
+            LevelScene.instance.EnemyManager.EnemyEnterBase(this);
             Destroy(gameObject);
         }
 
         public void Die() {
-            EnemyManager.Get().EnemyDie(this);
+            LevelScene.instance.EnemyManager.EnemyDie(this);
             Destroy(gameObject);
         }
 

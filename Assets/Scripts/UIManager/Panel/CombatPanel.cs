@@ -14,7 +14,6 @@ using System;
 namespace MUI {
     public class CombatPanel : BasePanel {
         #region ÓÎÏ·¶ÔÏó
-        LevelScene combatScene;
         Transform towerPanel;
         Transform skillPanel;
         Button btn_setting;
@@ -34,10 +33,8 @@ namespace MUI {
 
 
         private IEnumerator Start() {
-            yield break;
 
             GameData gameData = GameData.Get();
-            combatScene = FindFirstObjectByType<LevelScene>();
 
             #region ÅÚËþ
             {
@@ -49,6 +46,9 @@ namespace MUI {
                     Transform towerBtnTF = Instantiate(towerBtnPrefab, towerPanel).transform;
                     towerBtnTF.name = tower.realID;
                     towerBtnTF.Find<AddressableImage>("icon").SetSprite(tower.btnIconAddress);
+                    towerBtnTF.GetComponent<Button>().BindListener(() => {
+                        LevelScene.instance.BuildManager.curDragTowerRealID = tower.realID;
+                    });
                 }
                 Addressables.Release(towerBtnPrefab);
             }

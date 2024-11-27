@@ -1,4 +1,5 @@
 using Helper;
+using MScene;
 using MTL.Event;
 using System;
 using System.Collections;
@@ -50,7 +51,7 @@ namespace MTL.Combat {
         /// 检查是否生成完成 + 全部消灭
         /// </summary>
         public void CheckCompleted() {
-            completed = spwanCompleted && EnemyManager.Get().ExistEnemyNum == 0;
+            completed = spwanCompleted && LevelScene.instance.EnemyManager.ExistEnemyNum == 0;
         }
 
         public IEnumerator StartWave() {
@@ -62,7 +63,11 @@ namespace MTL.Combat {
             foreach (var instruction in spwanInstructions) {
                 // 生成敌人
                 for (int i = 0; i < instruction.number; i++) {
-                    GameObject enemyGO = instruction.InstantiateEnemy(birthPos, ratI).Result;
+                    //GameObject enemyGO = instruction.InstantiateEnemy(birthPos, ratI).Result;
+                    GameObject enemyGO = instruction.InstantiateEnemy(birthPos, ratI, LevelScene.instance.WaveManager.transform);
+                    Enemy enemy = enemyGO.GetComponent<Enemy>();
+                    enemy.Init(path);
+                    LevelScene.instance.EnemyManager.AddEnemy(enemy);
                     yield return CoroutineHelper.WaitForSeconds(spawnDelay);
                 }
                 instruction.ReleaseAsset();

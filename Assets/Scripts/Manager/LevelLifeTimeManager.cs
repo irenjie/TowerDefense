@@ -21,8 +21,9 @@ namespace MTL.Combat {
 
         Health baseHealth;
 
-        public void Init() {
+        public void LevelStart() {
             levelConfig = GameData.Get().selectedLevel;
+            energyNum = GameData.Get().selectedLevel.startEnerge;
 
             combatPanel = UIManager.Combat.Navigation<CombatPanel>("UI/CombatPanel.prefab");
             PlayStroy();
@@ -34,10 +35,11 @@ namespace MTL.Combat {
         public void PlayStroy() {
             var panel = UIManager.Front.PopUp<StroyPlayPanel>("UI/StoryPlayPanel.prefab");
             panel.PlayStory(levelConfig.stroyDesc);
+            EventManager.Get().Subscribe((int)EventID.StoryPlayOver, StartNextWave);
         }
 
         private void StartNextWave(object sender, GameEventArgs e) {
-            LevelScene.WaveManager.StartNextWave();
+            LevelScene.instance.WaveManager.StartNextWave();
         }
 
         private void Victory() {
@@ -50,6 +52,10 @@ namespace MTL.Combat {
 
         public bool HasEnoughEnergyToBuildTower(int buildEnergy) {
             return energyNum >= buildEnergy;
+        }
+
+        public void AddEnergyNum(int num) {
+            energyNum = Math.Max(0, energyNum - num);
         }
 
         private void SubscribeEvents() {

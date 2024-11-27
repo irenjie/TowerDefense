@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_151130F2: 0.23
-    - _QueueControl: -1
+    - _QueueControl: 1
     - _QueueOffset: 0
     m_Colors:
     - Color_18D27A8B: {r: 0.31772873, g: 0.7415235, b: 0.7924528, a: 0}

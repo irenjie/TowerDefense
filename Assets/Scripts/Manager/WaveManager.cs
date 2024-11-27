@@ -45,7 +45,11 @@ namespace MTL.Combat {
             }
         }
 
-        public IEnumerator StartNextWave() {
+        public void StartNextWave() {
+            StartCoroutine(StartNextWaveReal());
+        }
+
+        private IEnumerator StartNextWaveReal() {
             if (curWaveIndex >= waves.Count)
                 yield break;
 

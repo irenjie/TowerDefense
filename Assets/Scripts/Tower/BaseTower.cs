@@ -4,29 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MTL.Combat {
-    public class BaseTower : Attacker {
+    public class BaseTower : MonoBehaviour {
 
         protected TowerConfig towerConfig;
         protected bool canAttack = false;
+        [SerializeField] protected int towerID;
+        protected int towerLevel = 1;
 
-        public virtual void Init(int towerID) {
+        public virtual void Init() {
             towerConfig = TowerHelper.GetTowerConfigById(towerID);
             canAttack = true;
         }
 
-        public override float GetAttackDamage() {
-            return towerConfig.attackPower;
-        }
-
-        /// <summary>
-        /// 最近可攻击目标
-        /// </summary>
-        /// <returns></returns>
-        public Enemy GetClosestEnemyTarget() {
-            Enemy target = null;
-
-            return target;
-
-        }
     }
 }

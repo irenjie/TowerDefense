@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 namespace MScene {
     public class LoadingScene : BaseScene {
         private void Awake() {
-            UnityDebugHelper.Log("loadingscene");
+            //UnityDebugHelper.Log("loadingscene");
         }
 
         public static void TransitionSceneWithLoading<T>(string address, LoadSceneMode mode, SceneTransition<T> sceneTransition, bool clearUIWhenLoad = true) where T : BaseScene {

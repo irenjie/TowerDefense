@@ -13,7 +13,7 @@ namespace MUI {
                 UIManager.Front.Close(this);
             });
 
-            Button bgBtn = root.Find<Button>("background");
+            Button dialogBtn = root.Find<Button>("dialogBG");
 
             Text contentText = root.Find<Text>("content");
             SetContentText(0);
@@ -21,11 +21,11 @@ namespace MUI {
             void SetContentText(int index) {
                 contentText.text = dialogue[index];
                 if (index < dialogue.Count - 1) {
-                    bgBtn.BindListener(() => {
+                    dialogBtn.BindListener(() => {
                         SetContentText(index + 1);
                     });
                 } else {
-                    bgBtn.BindListener(() => {
+                    dialogBtn.BindListener(() => {
                         UIManager.Front.Close(this);
                         EventManager.Get().Fire(this, (int)EventID.StoryPlayOver, null);
                     });

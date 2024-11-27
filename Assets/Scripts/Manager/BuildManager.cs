@@ -6,12 +6,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Rendering;
 
 namespace MTL.Combat {
 
     public class BuildManager : MonoBehaviour {
         // 当前选中要建造的炮塔 ID
-        int curDragTowerID = -1;
+        public string curDragTowerRealID = string.Empty;
         // 要建造的炮塔拖动时不可建（不在塔座上）时对象
         GameObject dragTowerRedRim = null;
         // 要建造的炮塔拖动时可建（在塔座上）时对象
@@ -31,6 +32,9 @@ namespace MTL.Combat {
             DragTowerUpdate();
         }
 
+        /// <summary>
+        /// 点击塔座，弹出建造炮塔或升级面板
+        /// </summary>
         void SelectTowerBaseUpdate() {
             if (Input.GetMouseButtonUp(0)) {
                 if (curShowMenuTowerBase != null) {
@@ -52,49 +56,57 @@ namespace MTL.Combat {
             }
         }
 
+        /// <summary>
+        /// 点击炮塔菜单中的炮塔，开始拖动
+        /// </summary>
         void DragTowerUpdate() {
-            // 拖动中
-            if (curDragTowerID != -1) {
-                if (dragTowerRedRim == null || dragTowerBlueRim == null)
-                    CreateDragRim();
-                else {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out RaycastHit hit, towerStation)) {
-                        GameObject hitObj = hit.collider.gameObject;
-                        if (hitObj.TryGetComponent<Buildable>(out Buildable towerBase)) {
-                            // 鼠标射线在塔座上
-                            dragTowerRedRim.SetActive(false);
-                            dragTowerBlueRim.SetActive(true);
-                            dragTowerBlueRim.transform.position = hit.point;
-                            if (Input.GetMouseButtonUp(0)) {
-                                TowerConfig towerConfig = TowerHelper.GetTowerConfigById(curDragTowerID);
-                                if (towerBase.CanBuild) {
-                                    if (LevelScene.LevelLifeTimeManager.HasEnoughEnergyToBuildTower(towerConfig.energeCost))
-                                        towerBase.BuildTower();
-                                    else
-                                        EventManager.Get().Fire(this, (int)EventID.TipPanel_ShowTip, new StringEventArgs("没有足够能量"));
-                                }
-                            }else if (Input.GetMouseButtonUp(1)) {
-                                ResetDragData();
-                            }
-                        } else {
-                            // 没拖到塔座上点击鼠标取消拖拽
-                            dragTowerRedRim.SetActive(true);
-                            dragTowerBlueRim.SetActive(false);
-                            dragTowerRedRim.transform.position = hit.point;
-                            if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0)) {
-                                ResetDragData();
-                            }
-                        }
-                    }
-                }
+            if (string.IsNullOrEmpty(curDragTowerRealID))
+                return;
 
+            if (dragTowerRedRim == null || dragTowerBlueRim == null) {
+                CreateDragRim();
+                return;
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // 鼠标射线在塔座上
+            if (Physics.Raycast(ray, out RaycastHit hit, towerStation)) {
+                GameObject hitObj = hit.collider.gameObject;
+                if (hitObj.TryGetComponent<Buildable>(out Buildable towerBase)) {
+                    dragTowerRedRim.SetActive(false);
+                    dragTowerBlueRim.SetActive(true);
+                    dragTowerBlueRim.transform.position = hit.point;
+                    if (Input.GetMouseButtonUp(0)) {
+                        TowerConfig towerConfig = TowerHelper.GetTowerConfigRealId(curDragTowerRealID);
+                        if (towerBase.CanBuild) {
+                            if (LevelScene.instance.LevelLifeTimeManager.HasEnoughEnergyToBuildTower(towerConfig.energeCost))
+                                towerBase.BuildTower(towerConfig);
+                            else
+                                EventManager.Get().Fire(this, (int)EventID.TipPanel_ShowTip, new StringEventArgs("没有足够能量"));
+                            ResetDragData();
+                        }
+                    } else if (Input.GetMouseButtonUp(1)) {
+                        ResetDragData();
+                    }
+                    return;
+                }
+            } else {
+                return;
+            }
+
+            // 射在地面上
+            dragTowerRedRim.SetActive(true);
+            dragTowerBlueRim.SetActive(false);
+            dragTowerRedRim.transform.position = hit.point + new Vector3(0, 2, 0);
+            if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0)) {
+                ResetDragData();
             }
         }
 
         void CreateDragRim() {
-            dragTowerRedRim = LoaderHelper.Get().InstantiatePrefab($"{curDragTowerID}R");
-            dragTowerBlueRim = LoaderHelper.Get().InstantiatePrefab($"{curDragTowerID}B");
+            dragTowerRedRim = LoaderHelper.Get().InstantiatePrefab($"Tower/Rim/{curDragTowerRealID}R.prefab", transform);
+            dragTowerBlueRim = LoaderHelper.Get().InstantiatePrefab($"Tower/Rim/{curDragTowerRealID}B.prefab", transform);
         }
 
         void ResetDragData() {
@@ -103,7 +115,7 @@ namespace MTL.Combat {
             Destroy(dragTowerRedRim);
             Destroy(dragTowerBlueRim);
             dragTowerRedRim = dragTowerBlueRim = null;
-            curDragTowerID = -1;
+            curDragTowerRealID = string.Empty;
         }
     }
 }

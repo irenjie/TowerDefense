@@ -10,15 +10,11 @@ namespace MTL.Combat {
         Path path = null;
         Enemy enemy = null;
 
-        private bool isMove = true;
+        private bool isMove = false;
         int curPathNodeIndex;
 
         public void Stop() {
             isMove = false;
-        }
-
-        private void Start() {
-            isMove = true;
         }
 
         public void Init(Path path) {
