@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1150357500293506556}
   - component: {fileID: 7689086559954499463}
   - component: {fileID: 4383778246053887578}
+  - component: {fileID: 7080032094259565759}
   m_Layer: 9
   m_Name: 1001
   m_TagString: Untagged
@@ -101,14 +102,41 @@ BoxCollider:
     m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 759
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.6130944, z: 1.8214271}
-  m_Center: {x: 0, y: 0.692926, z: 0.062013697}
+  m_Size: {x: 1.9524995, y: 1.7191347, z: 2.4425375}
+  m_Center: {x: 0.000047768866, y: 0.8215013, z: 0.09745607}
+--- !u!54 &7080032094259565759
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785062325016738792}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5661469614471659091
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7065769725036746798
 Transform:
   m_ObjectHideFlags: 0
@@ -472,37 +500,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3785062325016738799}
     m_Modifications:
-    - target: {fileID: 100756287322114557, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 10798e16b76ec994495146e500f7b807, type: 2}
-    - target: {fileID: 100756287322114557, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100756287322114557, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 544501505977880207, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 4568854290424164930, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
       propertyPath: m_Name
       value: HealthBarPivot
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568854290424164930, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568854290424164930, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800179848385146605, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5800179848385146605, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -544,20 +544,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6574696871914578913, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7815437281661664119, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 10798e16b76ec994495146e500f7b807, type: 2}
-    - target: {fileID: 8447455368801640315, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 742209920978639950, guid: 7e5962b52facca84aad5909b52729b82, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

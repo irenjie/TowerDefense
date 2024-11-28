@@ -1,3 +1,4 @@
+using Helper;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
@@ -27,5 +28,8 @@ public class CameraManager : MonoBehaviour {
             dir.y = 0;
             _cam.transform.position += dir * moveSpeed;
         }
+
+        float wheel = Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 10000;
+        _cam.transform.Translate(Vector3.forward * wheel);
     }
 }

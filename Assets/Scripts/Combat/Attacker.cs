@@ -15,11 +15,9 @@ public enum EAttackType {
 
 namespace MTL.Combat {
 
-    public abstract class Attacker : MonoBehaviour {
-        public int id => transform.GetInstanceID();
-        EAttackType attackType;
-        EDamageType damageType;
+    public interface Attacker {
+        public int ID { get; }
 
-        public abstract float GetAttackDamage();
+        public float GetAttackDamage();
     }
 }

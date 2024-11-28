@@ -18,5 +18,23 @@ namespace MTL.Combat {
 
         // ¹¥»÷¸½¼Ó buff
         private readonly List<BuffInfo> addBuffs = new List<BuffInfo>();
+
+        public DamageInfo(Attacker attacker, GameObject target, float damage, EDamageType type, Vector3 damageDegree, float criticalRate, int hitRate, List<BuffInfo> addBuffs) {
+            this.attacker = attacker;
+            this.target = target;
+            this.damage = damage;
+            this.type = type;
+            this.damageDegree = damageDegree;
+            this.criticalRate = criticalRate;
+            this.hitRate = hitRate;
+            this.addBuffs = addBuffs;
+        }
+
+        public DamageInfo(Attacker attacker, GameObject target, float damage, EDamageType type) {
+            this.attacker = attacker;
+            this.target = target;
+            this.damage = damage;
+            this.type = type;
+        }
     }
 }

@@ -36,6 +36,10 @@ namespace MTL.Combat {
             Destroy(gameObject);
         }
 
+        public void TakeDamage(DamageInfo damageInfo) {
+            health.TakeDamage(damageInfo);
+        }
+
 
     }
 }

@@ -8,7 +8,8 @@ namespace MTL.Combat {
 
         float attackCD = 0;
 
-
+        private void Start() {
+        }
 
         private void Update() {
             if (attackCD > 0) {
@@ -29,9 +30,8 @@ namespace MTL.Combat {
 
         void Attack(Enemy target) {
             GameObject bullet = Instantiate<GameObject>(bulletPrefab, transform);
-            attackCD = towerConfig.attackSpeed;
-            bullet.GetComponent<Bullet>().Init(attackPoint.position, transform.forward, this);
+            attackCD = 1 / towerConfig.attackSpeed;
+            bullet.GetComponent<Bullet>().Init(attackPoint.position, target.transform, this);
         }
-
     }
 }

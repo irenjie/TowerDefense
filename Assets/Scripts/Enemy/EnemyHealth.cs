@@ -1,11 +1,23 @@
-
+using Extensions;
+using UnityEngine.UI;
 
 namespace MTL.Combat {
     public class EnemyHealth : Health {
         Enemy enemy;
+        Image healthBar;
+
+        private void Awake() {
+            enemy = GetComponent<Enemy>();
+            healthBar = transform.Find<Image>("HealthBarPivot/Canvas/ImageFill");
+        }
 
         private void Start() {
-            enemy = GetComponent<Enemy>();
+            Init(enemy.enemyConfig.maxHealth);
+        }
+
+
+        private void Update() {
+            healthBar.fillAmount = curHealth / maxHealth;
         }
 
         public override void TakeDamage(DamageInfo dinfo) {
@@ -27,7 +39,11 @@ namespace MTL.Combat {
             base.TakeDamage(damageResult);
         }
 
+
         protected override void HandleDeath() {
+            if (curHealth > 0)
+                return;
+
             enemy.Die();
 
             base.HandleDeath();

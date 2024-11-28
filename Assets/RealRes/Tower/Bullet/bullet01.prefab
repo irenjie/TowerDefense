@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3390766688153196581}
   - component: {fileID: 2738480417168893773}
   - component: {fileID: 3823164208509070010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bullet01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d4224ecb8aa684cb5fbe53c30f2464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 30
   aliveDuration: 5
 --- !u!65 &2738480417168893773
 BoxCollider:
@@ -64,14 +64,14 @@ BoxCollider:
     m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 1527
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.3436311}
-  m_Center: {x: 0, y: 0, z: -0.53281325}
+  m_Size: {x: 1, y: 1, z: 3.518544}
+  m_Center: {x: 0, y: 0, z: -1.6202695}
 --- !u!54 &3823164208509070010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 2090141857602232685}
   - component: {fileID: 595360918559965287}
   - component: {fileID: 5736602226166731971}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 7880147677198142530}
   - component: {fileID: 2417199630170969141}
   - component: {fileID: 659298352715591905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 3390766688172353385}
   - component: {fileID: 7928898794564766409}
   - component: {fileID: 3584278650716263579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bullet01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

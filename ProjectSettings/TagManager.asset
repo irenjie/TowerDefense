@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Tower
   - TowerBase
-  - 
-  - 
-  - 
+  - Ground
+  - Enemy
+  - Bullet
   - 
   - 
   - 

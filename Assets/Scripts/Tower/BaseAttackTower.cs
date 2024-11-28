@@ -6,10 +6,12 @@ using UnityEngine;
 namespace MTL.Combat {
 
 
-    public abstract class BaseAttackTower : BaseTower {
+    public abstract class BaseAttackTower : BaseTower,Attacker {
         public Vector3 position => transform.position;
-        [SerializeField] protected Transform attackPoint;
 
+        public int ID => transform.GetInstanceID();
+
+        [SerializeField] protected Transform attackPoint;
 
         /// <summary>
         /// 最近可攻击目标
@@ -30,5 +32,8 @@ namespace MTL.Combat {
             return null;
         }
 
+        public float GetAttackDamage() {
+            return towerConfig.attackPower;
+        }
     }
 }
