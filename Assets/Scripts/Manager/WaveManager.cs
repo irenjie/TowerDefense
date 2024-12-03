@@ -16,8 +16,11 @@ namespace MTL.Combat {
     public class WaveManager : DelayBehaviour {
         [SerializeField] List<Wave> waves;
         public bool allWaveCompleted { get; private set; } = false;
-        private int curWaveIndex = 0;
-        public bool curWaveCompleted => waves[curWaveIndex].completed;
+        private int _curWaveIndex = -1;
+        public bool curWaveCompleted => waves[_curWaveIndex].completed;
+
+        public int waveCount => waves.Count;
+        public int curWaveIndex => _curWaveIndex;
 
         #region »Øµ÷µã
         #endregion
@@ -27,18 +30,16 @@ namespace MTL.Combat {
         }
 
         private void Update() {
-            if (curWaveIndex >= waves.Count) {
+            if (_curWaveIndex < 0 || _curWaveIndex >= waves.Count || curWaveCompleted) {
                 return;
             }
-            waves[curWaveIndex].CheckCompleted();
+            waves[_curWaveIndex].CheckCompleted();
 
             if (curWaveCompleted) {
                 EventManager eventManager = EventManager.Get();
                 eventManager.Fire(this, (int)EventID.WaveCompleted, null);
 
-                if (curWaveIndex < waves.Count - 1)
-                    curWaveIndex++;
-                else {
+                if (_curWaveIndex >= waves.Count - 1) {
                     allWaveCompleted = true;
                     eventManager.Fire(this, (int)EventID.AllWaveCompleted, null);
                 }
@@ -50,10 +51,11 @@ namespace MTL.Combat {
         }
 
         private IEnumerator StartNextWaveReal() {
-            if (curWaveIndex >= waves.Count)
+            ++_curWaveIndex;
+            if (_curWaveIndex >= waves.Count)
                 yield break;
 
-            yield return waves[curWaveIndex].StartWave();
+            yield return waves[_curWaveIndex].StartWave();
         }
 
         public void SubscribeEvents() {

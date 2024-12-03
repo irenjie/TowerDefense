@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MScene;
 using System;
+using MTL.Combat;
 
 namespace MUI {
     public class CombatPanel : BasePanel {
@@ -21,6 +22,9 @@ namespace MUI {
         Button btn_timeScale;
         Transform dialogueBox;
         Text pauseText;
+        Text text_wave;
+        Text text_health;
+        Text text_energe;
         #endregion
 
         #region ÓÎÏ·×´Ì¬
@@ -31,10 +35,23 @@ namespace MUI {
         #region Õ½¶·Êý¾Ý
         #endregion
 
+        WaveManager waveManager;
 
         private IEnumerator Start() {
-
+            SubscriptEvent();
             GameData gameData = GameData.Get();
+            waveManager = LevelScene.instance.WaveManager;
+
+            #region ×óÉÏ½Ç
+            {
+                Transform legtTop = root.Find("leftTop");
+                text_wave = legtTop.Find<Text>("wave/Text");
+                text_health = legtTop.Find<Text>("health/Text");
+                text_energe = legtTop.Find<Text>("energe/Text");
+
+
+            }
+            #endregion
 
             #region ÅÚËþ
             {
@@ -81,12 +98,13 @@ namespace MUI {
                 });
 
                 #region ÔÝÍ£¡¢ÏÂÒ»²¨
+                pauseState = PauseState.WaitingWaveStart;
                 pauseText = btn_pause.transform.Find<Text>("Text");
                 btn_pause.BindListener(() => {
                     switch (pauseState) {
                         case PauseState.WaitingWaveStart:
-                            pauseText.text = "ÔÝÍ£";
                             pauseState = PauseState.InProgress;
+                            pauseText.text = "ÔÝÍ£";
                             EventManager.Get().Fire(btn_pause.gameObject, (int)EventID.WaveStart, null);
                             break;
                         case PauseState.InProgress:
@@ -122,7 +140,9 @@ namespace MUI {
             midBottom.DestroyAllChilds();
         }
 
-
+        private void Update() {
+            text_wave.text = $"{waveManager.curWaveIndex + 1}/{waveManager.waveCount}";
+        }
 
         private void SubscriptEvent() {
             EventManager eventManager = EventManager.Get();
@@ -130,14 +150,19 @@ namespace MUI {
             eventManager.Subscribe((int)EventID.WaveCompleted, OnWaveCompleted);
         }
 
-        private void ClearEvent() {
+        private void UnSubscriptEvent() {
             EventManager eventManager = EventManager.Get();
             eventManager.UnSubscribe((int)EventID.WaveCompleted, OnWaveCompleted);
         }
 
         private void OnWaveCompleted(object sender, GameEventArgs e) {
+            pauseState = PauseState.WaitingWaveStart;
             pauseText.text = "ÏÂÒ»²¨";
             Time.timeScale = curTimeScale = 1;
+        }
+
+        private void OnDestroy() {
+            UnSubscriptEvent();
         }
     }
 

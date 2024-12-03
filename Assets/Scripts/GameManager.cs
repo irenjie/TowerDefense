@@ -22,12 +22,7 @@ namespace Program {
 
 #endif
 
-            SceneTransition<MainScene> mainSceneTransition = new SceneTransition<MainScene>();
-            mainSceneTransition.transitionEnd += mainScene => {
-                MUI.UIManager.Front.Navigation<MainPanel>("UI/MainPanel.prefab");
-            };
-
-            MySceneManager.Get().LoadScene<MainScene>("Scenes/MainScene.unity", UnityEngine.SceneManagement.LoadSceneMode.Single, mainSceneTransition);
+            MySceneManager.Get().LoadScene<MainScene>("Scenes/MainScene.unity", UnityEngine.SceneManagement.LoadSceneMode.Single, default);
         }
 
         private void OnApplicationFocus(bool focus) {

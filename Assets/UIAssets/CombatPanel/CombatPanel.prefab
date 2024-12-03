@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 6472635831006598378}
   - component: {fileID: 1854338901568446971}
   - component: {fileID: 61060875045268473}
+  - component: {fileID: 4093627419642621110}
   m_Layer: 0
   m_Name: timeScale
   m_TagString: Untagged
@@ -497,6 +498,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a5b1b8a8ecec34bb1bdbc3c1e98282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4093627419642621110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293954837480513179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &3557326866038860307
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +975,7 @@ GameObject:
   - component: {fileID: 69283370977302189}
   - component: {fileID: 1016133490321587748}
   - component: {fileID: 9075168543633560668}
+  - component: {fileID: 4510647582676475611}
   m_Layer: 0
   m_Name: setting
   m_TagString: Untagged
@@ -1082,6 +1097,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a5b1b8a8ecec34bb1bdbc3c1e98282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4510647582676475611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746920592621719672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &6015268146002825239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1329,7 @@ GameObject:
   - component: {fileID: 150136704394364191}
   - component: {fileID: 3278604832675940856}
   - component: {fileID: 5918070166097370412}
+  - component: {fileID: 4333100774338866749}
   m_Layer: 0
   m_Name: pause
   m_TagString: Untagged
@@ -1422,6 +1451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a5b1b8a8ecec34bb1bdbc3c1e98282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4333100774338866749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520179167839763235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &7756251340107196259
 GameObject:
   m_ObjectHideFlags: 0

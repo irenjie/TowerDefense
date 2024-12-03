@@ -80,7 +80,7 @@ namespace MUI {
             panels.Add(panel);
             panel.PlayShowEffect();
             panel.sortingOrder = lastTopPanel == null ? order * groupPaddingLayer : lastTopPanel.sortingOrder + panelPaddingLayer;
-            if (panel.IsFullScreen) {
+            if (panel.IsFullScreen && lastTopPanel != null) {
                 lastTopPanel.SetGraphic(false);
             }
 

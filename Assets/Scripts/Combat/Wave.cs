@@ -55,6 +55,7 @@ namespace MTL.Combat {
         }
 
         public IEnumerator StartWave() {
+            spwanCompleted = false;
             OnWaveStart?.Invoke();
 
             yield return CoroutineHelper.WaitForSeconds(waveStartDelay);
@@ -72,6 +73,7 @@ namespace MTL.Combat {
                 }
                 instruction.ReleaseAsset();
             }
+            spwanCompleted = true;
             OnSpwanCompleted?.Invoke();
         }
 

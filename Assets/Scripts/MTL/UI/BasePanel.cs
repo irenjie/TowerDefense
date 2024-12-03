@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 namespace MUI {
     public class BasePanel : DelayBehaviour {
-        protected Canvas canvas;
-        protected RectTransform root;
+        public Canvas canvas { get; protected set; }
+        public RectTransform root { get; protected set; }
         private GraphicRaycaster raycaster;
         [SerializeField] private bool _isFullScreen;
         public bool IsFullScreen => _isFullScreen;

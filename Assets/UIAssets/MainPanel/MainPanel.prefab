@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 1698726367512721976}
   - component: {fileID: 6752724129772500634}
   - component: {fileID: 208678016734862162}
+  - component: {fileID: 8719211157180580719}
   m_Layer: 0
   m_Name: btn_settings
   m_TagString: Untagged
@@ -200,6 +201,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8719211157180580719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071644199401844516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &2109007376539643548
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +305,7 @@ GameObject:
   - component: {fileID: 6717806866616380486}
   - component: {fileID: 911211312877349119}
   - component: {fileID: 4632404779615075807}
+  - component: {fileID: 542033847835614704}
   m_Layer: 0
   m_Name: btn_start_game
   m_TagString: Untagged
@@ -400,6 +415,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &542033847835614704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193796737190014461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &3295753850716192971
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +888,7 @@ GameObject:
   - component: {fileID: 6059846918407438797}
   - component: {fileID: 2231655915281259536}
   - component: {fileID: 4036213087442618639}
+  - component: {fileID: 5118170585999491827}
   m_Layer: 0
   m_Name: btn_exit_game
   m_TagString: Untagged
@@ -969,6 +998,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5118170585999491827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103091408615456394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!1 &9138871458772785591
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +1023,7 @@ GameObject:
   - component: {fileID: 1592653625767021405}
   - component: {fileID: 5218203807621984882}
   - component: {fileID: 8776286250394833823}
+  - component: {fileID: 5391457288531379289}
   m_Layer: 0
   m_Name: btn_credits
   m_TagString: Untagged
@@ -1090,3 +1133,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5391457288531379289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138871458772785591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00d39d51e756f419649c28703c0440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}

@@ -3816,13 +3816,53 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
       propertyPath: waves.Array.data[0].path
+      value: 
+      objectReference: {fileID: 1001800329}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].path
       value: 
       objectReference: {fileID: 1001800329}
     - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
       propertyPath: waves.Array.data[0]._birthPos
       value: 
       objectReference: {fileID: 1969126163}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1]._birthPos
+      value: 
+      objectReference: {fileID: 1969126163}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].waveStartDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spwanInstructions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spwanInstructions.Array.data[0].number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spwanInstructions.Array.data[1].number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spwanInstructions.Array.data[0].enemy.m_AssetGUID
+      value: 030b90e4a43d2af42a2f59d297af137d
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700900296832132101, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
+      propertyPath: waves.Array.data[1].spwanInstructions.Array.data[1].enemy.m_AssetGUID
+      value: 030b90e4a43d2af42a2f59d297af137d
+      objectReference: {fileID: 0}
     - target: {fileID: 5730717756751065713, guid: 6855c5cb3c6b02c449c351231a31e498, type: 3}
       propertyPath: m_Name
       value: General

@@ -7,6 +7,7 @@ namespace MTL.Event {
         SwitchScene = 2,
         TipPanel_ShowTip = 3,
 
+        LevelStart = 999,
         StoryPlayOver = 1000,
         WaveCompleted = 1001,
         AllWaveCompleted = 1002,
